@@ -1,0 +1,29 @@
+section{
+    padding: 5rem;
+    min-height: calc(100vh - 86px);
+    justify-content: center;
+    position: relative;
+    border-top: 4px solid var(--ink);
+    background-color: var(--paper);
+}
+section.hero{
+    border-top: none;
+}
+section.aboutme{ --section-accent: var(--pink); background-color: var(--paper-light); }
+section.resume{ --section-accent: var(--blue); background-color: var(--tint-blue); }
+section.skills{ --section-accent: var(--mint); background-color: var(--paper); }
+section.education{ --section-accent: var(--yellow); background-color: var(--tint-mint); }
+section.experiences{ --section-accent: var(--coral); background-color: var(--paper-light); }
+section.projets{ --section-accent: var(--pink); background-color: var(--tint-pink); }
+
+/* trame de points discrète sur les sections */
+section{
+    background-image: radial-gradient(rgba(17, 17, 17, .09) 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
+}
+
+@media screen and (max-width: 774px) {
+    section{
+        padding: 4rem 1.5rem;
+    }
+}

@@ -1,0 +1,40 @@
+.skills-card{
+    padding: 0 1.1rem;
+    display: inline-flex;
+    height: 3.2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background-color: var(--white);
+    border-radius: 999px;
+    font-weight: 700;
+    border: var(--border);
+    font-size: 1em;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .12s ease, box-shadow .12s ease, background-color .15s;
+    cursor: pointer;
+    z-index: 90;
+    position: relative;
+    user-select: none;
+}
+.skills-card:nth-child(5n+1):hover, .skills-card:nth-child(5n+1).active{ background-color: var(--yellow); }
+.skills-card:nth-child(5n+2):hover, .skills-card:nth-child(5n+2).active{ background-color: var(--pink); }
+.skills-card:nth-child(5n+3):hover, .skills-card:nth-child(5n+3).active{ background-color: var(--mint); }
+.skills-card:nth-child(5n+4):hover, .skills-card:nth-child(5n+4).active{ background-color: var(--blue); }
+.skills-card:nth-child(5n+5):hover, .skills-card:nth-child(5n+5).active{ background-color: var(--coral); }
+.skills-card:hover, .skills-card.active{
+    transform: translate(2px, 2px);
+    color: var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+}
+.skills-card:hover{
+    z-index: 999;
+}
+.skills-card .tooltip.visible{
+    transform: scale(1) rotate(-1deg);
+    opacity: 1;
+    color: var(--ink);
+}
+.skills-card:hover, .skills-card:focus-visible{
+    z-index: 999;
+}

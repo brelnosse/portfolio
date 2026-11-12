@@ -1,0 +1,39 @@
+.socialsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    max-width: fit-content;
+    background: transparent;
+}
+.socialsContainer a {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .2s ease-out, transform .3s var(--ease-pop), box-shadow .15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+}
+.socialsContainer.animate-in a {
+    opacity: 1;
+    transform: none;
+}
+.socialsContainer a:nth-child(4n+1):hover{ background: var(--yellow); }
+.socialsContainer a:nth-child(4n+2):hover{ background: var(--blue); }
+.socialsContainer a:nth-child(4n+3):hover{ background: var(--pink); }
+.socialsContainer a:nth-child(4n+4):hover{ background: var(--mint); }
+.socialsContainer a:hover {
+    transform: translate(-2px, -2px) rotate(-6deg);
+    box-shadow: 5px 5px 0 var(--ink);
+}
+.socialsContainer svg {
+    font-size: 1.4em;
+    color: var(--ink);
+    cursor: pointer;
+}

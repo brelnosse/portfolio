@@ -1,0 +1,290 @@
+section.hero{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    position: relative;
+    padding: 4rem 6vw 5rem;
+    background-color: var(--yellow);
+    background-image:
+        linear-gradient(rgba(17, 17, 17, .09) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(17, 17, 17, .09) 2px, transparent 2px);
+    background-size: 44px 44px;
+}
+
+.heroDescription{
+    max-width: 760px;
+    position: relative;
+    z-index: 2;
+}
+.heroDescription h3{
+    font-size: 1.1em;
+    user-select: none;
+    margin-bottom: 1rem;
+}
+.hero-hello{
+    display: inline-block;
+    background: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: .3rem .8rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .95rem;
+    transform: rotate(-2deg);
+}
+.heroDescription h1{
+    font-size: clamp(3.2rem, 8.5vw, 7.4rem);
+    line-height: .95;
+    text-transform: uppercase;
+}
+.heroDescription h1 span.primary{
+    font-family: var(--font-display);
+    color: var(--white);
+    -webkit-text-stroke: 3px var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 6px 6px 0 var(--ink);
+}
+.heroDescription h1 span.primary .letter{
+    font-family: var(--font-display);
+}
+.heroDescription h4{
+    display: flex;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    user-select: none;
+    font-weight: 500;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 1.6rem;
+    line-height: 1.45;
+}
+.hero-h4-text{
+    background: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: .8rem 1rem;
+    max-width: 620px;
+}
+.heroDescription .actions{
+    padding: 1.6rem 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+}
+.heroDescription .actions .btn{
+    font-size: 1.1em;
+    padding: 12px 22px;
+}
+.heroDescription .actions .button-wrapper:first-child .btn{
+    background: var(--ink);
+    color: var(--yellow);
+}
+
+/* ------------------------------------------------ photo */
+.heroImg{
+    width: clamp(260px, 28vw, 380px);
+    min-width: 260px;
+    aspect-ratio: 4 / 5;
+    position: relative;
+    z-index: 2;
+}
+.heroImg-frame{
+    position: absolute;
+    inset: 0;
+    border: 4px solid var(--ink);
+    box-shadow: 14px 14px 0 var(--ink);
+    background: var(--pink);
+    overflow: hidden;
+    transform: rotate(3deg);
+    transition: transform .4s var(--ease-pop);
+}
+.heroImg:hover .heroImg-frame{
+    transform: rotate(-1deg) scale(1.02);
+}
+.heroImg .profil{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-position: center top;
+    object-fit: cover;
+}
+.heroImg .s{
+    position: absolute;
+    bottom: -2.2rem;
+    left: -3rem;
+    width: 120px;
+    height: auto;
+    animation: float 5s ease-in-out infinite;
+}
+.heroImg .r{
+    position: absolute;
+    top: -2.6rem;
+    right: -2.8rem;
+    width: 120px;
+    height: 120px;
+    animation: spin 14s linear infinite;
+}
+.hero-sticker{
+    position: absolute;
+    left: -1.6rem;
+    top: 1.4rem;
+    background: var(--mint);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: .35rem .8rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    text-transform: uppercase;
+    transform: rotate(-8deg);
+    white-space: nowrap;
+}
+@keyframes spin{ to{ transform: rotate(360deg); } }
+@keyframes float{
+    0%, 100%{ transform: translateY(0) rotate(0); }
+    50%{ transform: translateY(-10px) rotate(-4deg); }
+}
+
+/* ------------------------------------------------ animations d'entrée */
+.word-wrapper { display: inline-block; white-space: nowrap; }
+.word-space { display: inline; }
+.letter {
+    display: inline-block;
+    transition: opacity .35s ease-out, transform .45s var(--ease-pop);
+}
+.letter-hidden {
+    opacity: 0;
+    transform: translateY(40px) rotate(8deg);
+}
+.letter-visible {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+}
+
+.hero-line {
+    display: inline-flex;
+    height: 6px;
+    background-color: var(--ink);
+    transition: width 0.6s ease;
+}
+.hero-line.line-hidden { width: 0; }
+.hero-line.line-visible { width: 7rem; }
+
+.hero-h3 { transition: opacity 0.5s ease-out, transform 0.5s var(--ease-pop); }
+.hero-h3.element-hidden { opacity: 0; transform: translateX(-30px); }
+.hero-h3.element-visible { opacity: 1; transform: translateX(0); }
+
+.hero-im { font-size: 0.8em; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.hero-im.element-hidden { opacity: 0; transform: translateY(10px); }
+.hero-im.element-visible { opacity: 1; transform: translateY(0); }
+
+.hero-h4-text { transition: opacity 0.5s ease-out, transform 0.5s var(--ease-pop); }
+.hero-h4-text.element-hidden { opacity: 0; transform: translateY(16px) rotate(-1deg); }
+.hero-h4-text.element-visible { opacity: 1; transform: translateY(0); }
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.button-wrapper {
+    transition: opacity 0.4s ease-out, transform 0.45s var(--ease-pop);
+}
+.button-wrapper.button-hidden { opacity: 0; transform: translateY(20px) scale(0.9); }
+.button-wrapper.button-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+.heroImg { transition: opacity 0.6s ease-out, transform 0.7s var(--ease-pop); }
+.heroImg.image-hidden { opacity: 0; transform: translateY(40px) rotate(6deg) scale(.9); }
+.heroImg.image-visible { opacity: 1; transform: none; }
+
+/* ------------------------------------------------ badge hall of fame */
+.hof-badge{
+    margin-top: 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    background: var(--ink);
+    color: var(--yellow);
+    border: var(--border);
+    box-shadow: 4px 4px 0 var(--white);
+    padding: .5rem .9rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .85rem;
+    cursor: pointer;
+    transform: rotate(-1deg);
+    transition: opacity .5s ease-out, transform .45s var(--ease-pop), box-shadow .15s ease;
+}
+.hof-badge.element-hidden{
+    opacity: 0;
+    transform: translateY(16px) rotate(-1deg);
+    pointer-events: none;
+}
+.hof-badge:hover{
+    transform: translate(-2px, -2px) rotate(-2deg);
+    box-shadow: 6px 6px 0 var(--white);
+}
+.hof-badge:active{
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--white);
+}
+.hof-badge-arrow{
+    display: inline-block;
+    animation: hof-bounce 1.4s ease-in-out infinite;
+}
+@keyframes hof-bounce{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(3px); }
+}
+
+section.hero .socialsContainer{
+    justify-content: flex-start;
+    padding-top: 30px;
+    gap: 20px;
+}
+
+@media screen and (max-width: 976px){
+    section.hero{
+        flex-direction: column-reverse;
+        align-items: center;
+        height: auto;
+        padding: 3rem 1.5rem 4.5rem;
+        gap: 3.5rem;
+    }
+    .heroDescription{
+       text-align: center;
+    }
+    .heroDescription h4{
+        align-items: center;
+    }
+    .heroDescription .actions{
+        justify-content: center;
+    }
+    .hof-badge{
+        max-width: 100%;
+        text-align: left;
+    }
+    .hero-h4-text{
+        margin: 0 auto;
+    }
+    .heroImg{
+        margin-top: 2rem;
+    }
+}
+@media screen and (max-width: 520px){
+    .heroImg{
+        width: 230px;
+        min-width: 230px;
+    }
+    .heroImg .r{ width: 84px; height: 84px; right: -1.6rem; top: -1.8rem; }
+    .heroImg .s{ width: 84px; left: -1.6rem; }
+    .hero-sticker{ left: -0.8rem; }
+    .heroDescription h1 span.primary{
+        -webkit-text-stroke: 2px var(--ink);
+        text-shadow: 4px 4px 0 var(--ink);
+    }
+}

@@ -1,0 +1,59 @@
+.skills-resume_card {
+    width: 290px;
+    min-height: 250px;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(40px) rotate(-3deg);
+    transition: opacity .5s ease, transform .5s var(--ease-pop), box-shadow .15s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    padding: 1.4rem 1.3rem 1.5rem;
+}
+.skills-resume_card.visible {
+    opacity: 1;
+    transform: none;
+}
+.skills-resume_card.visible:hover {
+    transform: translate(-4px, -4px) rotate(-1deg);
+    box-shadow: 10px 10px 0 var(--ink);
+}
+.skills-resume_card:nth-child(4n+1){ background: var(--white); }
+.skills-resume_card:nth-child(4n+2){ background: var(--paper); }
+.skills-resume_card:nth-child(4n+3){ background: var(--white); }
+.skills-resume_card:nth-child(4n+4){ background: var(--paper); }
+
+.skills-resume_card img {
+    width: 64px;
+    height: 64px;
+    transition: transform .4s var(--ease-pop);
+}
+.skills-resume_card:hover img{
+    transform: rotate(-10deg) scale(1.1);
+}
+.skills-resume_card h3{
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+.skills-resume_card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.srcard-index{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--ink);
+}
+
+@media screen and (max-width: 768px) {
+    .skills-resume_card {
+        width: 100%;
+        max-width: 420px;
+    }
+}

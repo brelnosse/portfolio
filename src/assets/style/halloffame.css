@@ -1,0 +1,81 @@
+.hof{
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    width: 100%;
+}
+.hof li{
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--ink);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 6px 10px 6px 6px;
+    font-weight: 700;
+    transition: transform .15s ease;
+}
+.hof li:hover{
+    transform: translate(-2px, -2px) rotate(-.5deg);
+}
+.hof-rank{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-display);
+    font-size: .9rem;
+}
+.hof li.top-1 .hof-rank{ background: var(--yellow); color: var(--ink); outline: 2px solid var(--ink); }
+.hof li.top-2 .hof-rank{ background: var(--pink); color: var(--ink); outline: 2px solid var(--ink); }
+.hof li.top-3 .hof-rank{ background: var(--mint); color: var(--ink); outline: 2px solid var(--ink); }
+.hof-name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.hof-level{
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    text-transform: uppercase;
+    border: 2px solid var(--ink);
+    padding: 0 6px;
+    background: var(--paper);
+}
+.hof-score{
+    font-family: var(--font-display);
+    min-width: 4.5ch;
+    text-align: right;
+}
+.hof-empty{
+    font-weight: 700;
+    background: var(--white);
+    color: var(--ink);
+    border: 3px dashed var(--ink);
+    padding: .9rem 1rem;
+}
+.hof-loading li{
+    height: 44px;
+}
+.hof-skeleton{
+    grid-column: 1 / -1;
+    height: 14px;
+    background: repeating-linear-gradient(90deg, #e9e2cf 0 12px, #f6f0de 12px 24px);
+    animation: hof-shimmer 1s linear infinite;
+    background-size: 48px 100%;
+}
+@keyframes hof-shimmer{
+    to{ background-position: 48px 0; }
+}
+@media screen and (max-width: 420px){
+    .hof li{
+        grid-template-columns: 30px minmax(0, 1fr) auto;
+    }
+    .hof-level{
+        display: none;
+    }
+}

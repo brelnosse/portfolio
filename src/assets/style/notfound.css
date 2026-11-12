@@ -1,0 +1,408 @@
+/* ============================================================
+   404 = découverte de l'easter egg
+   ============================================================ */
+.nf{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe center;
+    gap: 2rem;
+    padding: 6rem 1.25rem 4rem;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--yellow);
+    background-image:
+        linear-gradient(rgba(17, 17, 17, .09) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(17, 17, 17, .09) 2px, transparent 2px);
+    background-size: 44px 44px;
+    transition: background-color .4s ease;
+}
+.nf.s3{
+    background-color: var(--pink);
+}
+.confetti-canvas{
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 50;
+}
+.nf-flash{
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 40;
+}
+.nf.s3 .nf-flash{
+    animation: nf-flash .6s ease-out;
+}
+
+.nf-stage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    user-select: none;
+}
+.nf.s3 .nf-stage{
+    animation: nf-shake .5s cubic-bezier(.36, .07, .19, .97);
+}
+
+/* ------------------------------------------------ 404 */
+.nf-digits{
+    display: flex;
+    align-items: center;
+    gap: .02em;
+    font-size: clamp(6rem, 19vw, 13rem);
+    line-height: 1;
+}
+.nf-digit{
+    display: inline-block;
+    font-family: var(--font-display);
+    color: var(--white);
+    -webkit-text-stroke: 5px var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 10px 10px 0 var(--ink);
+    opacity: 0;
+    transform: translateY(-120%) rotate(-12deg);
+    animation: nf-drop .7s var(--ease-pop) forwards;
+}
+.nf-digit.d1{ animation-delay: .05s; }
+.nf-digit.d2{ animation-delay: .2s; }
+.nf-digit.d3{ animation-delay: .35s; color: var(--mint); }
+.nf.s3 .nf-digit.d1{ color: var(--yellow); }
+
+.nf-zero{
+    position: relative;
+}
+.nf-o{
+    display: inline-block;
+    transition: transform .35s var(--ease-pop), opacity .25s ease;
+}
+.nf.s2 .nf-o{
+    transform: scale(0) rotate(120deg);
+    opacity: 0;
+}
+
+/* ------------------------------------------------ œuf */
+.nf-egg{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: .62em;
+    height: .74em;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform .45s var(--ease-pop) .1s, opacity .2s ease .1s;
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+}
+.nf.s2 .nf-egg{
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+.nf.s2:not(.s3) .nf-egg{
+    animation: nf-egg-crack .9s ease-in-out .45s infinite;
+}
+.nf-egg-half{
+    position: absolute;
+    inset: 0;
+    transition: transform .7s var(--ease-pop), opacity .4s ease;
+}
+.nf-egg-half img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.nf-egg-half.top{
+    clip-path: polygon(0 0, 100% 0, 100% 52%, 86% 45%, 72% 55%, 57% 44%, 42% 55%, 27% 45%, 12% 54%, 0 47%);
+    z-index: 2;
+}
+.nf-egg-half.bottom{
+    clip-path: polygon(0 47%, 12% 54%, 27% 45%, 42% 55%, 57% 44%, 72% 55%, 86% 45%, 100% 52%, 100% 100%, 0 100%);
+}
+.nf.s3 .nf-egg-half.top{
+    transform: translate(-55%, -70%) rotate(-38deg);
+}
+.nf.s3 .nf-egg-half.bottom{
+    transform: translateY(12%) rotate(6deg);
+}
+.nf-prize{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: .5em;
+    height: .5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    background: var(--mint);
+    border: 4px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    transform: translate(-50%, 30%) scale(0) rotate(-20deg);
+    transition: transform .6s var(--ease-pop) .15s;
+    z-index: 1;
+}
+.nf-prize svg{
+    font-size: .28em;
+    color: var(--ink);
+}
+.nf.s3 .nf-prize{
+    transform: translate(-50%, -55%) scale(1) rotate(-8deg);
+}
+
+/* ------------------------------------------------ textes */
+.nf-subtitle{
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3.4vw, 2.2rem);
+    text-transform: uppercase;
+    margin-top: 1rem;
+    background: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: .3rem 1rem;
+    opacity: 0;
+    transform: translateY(20px) rotate(2deg);
+    transition: opacity .35s ease, transform .45s var(--ease-pop);
+}
+.nf.s1 .nf-subtitle{
+    opacity: 1;
+    transform: rotate(-1.5deg);
+}
+.nf-ou-pas{
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+    background: var(--pink);
+    transition: max-width .6s steps(10, end);
+}
+.nf.s2 .nf-ou-pas{
+    max-width: 8em;
+}
+
+.nf-stamp{
+    position: absolute;
+    top: 30%;
+    left: 96%;
+    z-index: 30;
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 4.2vw, 2.8rem);
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--ink);
+    background: var(--mint);
+    border: 5px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
+    padding: .4rem 1.2rem;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-10deg) scale(3);
+    pointer-events: none;
+}
+.nf.s3 .nf-stamp{
+    animation: nf-stamp .45s cubic-bezier(.2, 1.4, .4, 1) .1s forwards;
+}
+
+.nf-skip{
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .8rem;
+    text-transform: uppercase;
+    opacity: .6;
+    animation: caret-blink 1.2s step-end infinite;
+}
+
+/* ------------------------------------------------ carte de découverte */
+.nf-card{
+    width: min(640px, 100%);
+    background: var(--paper-light);
+    border: 4px solid var(--ink);
+    box-shadow: var(--shadow-lg);
+    padding: 2rem 1.8rem 1.6rem;
+    position: relative;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(60px) rotate(3deg);
+    pointer-events: none;
+    transition: opacity .4s ease, transform .6s var(--ease-pop);
+}
+.nf.s4 .nf-card{
+    opacity: 1;
+    transform: rotate(-1deg);
+    pointer-events: auto;
+}
+.nf-card-tag{
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    background: var(--ink);
+    color: var(--yellow);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .8rem;
+    text-transform: uppercase;
+    padding: 4px 12px;
+}
+.nf-card h2{
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: .8rem;
+}
+.nf-card p{
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+.nf-card p b{
+    background: var(--yellow);
+    padding: 0 4px;
+}
+.nf-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin: 1.4rem 0 1.2rem;
+}
+.nf-actions .btn:first-child{
+    background: var(--ink);
+    color: var(--yellow);
+}
+.nf-hof{
+    margin: 0 0 1.2rem;
+}
+.nf-hof h3{
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: .6rem;
+}
+.nf-tip{
+    font-size: .85rem !important;
+    border-top: 2px dashed var(--ink);
+    padding-top: .9rem;
+}
+.nf-tip kbd{
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    background: var(--white);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .75rem;
+    margin: 0 1px;
+    padding: 0 3px;
+}
+
+/* ------------------------------------------------ fenêtre de jeu */
+.nf-game{
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(17, 17, 17, .65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: nf-fade .2s ease;
+}
+.nf-game-window{
+    width: min(94vw, 680px);
+    background: var(--white);
+    border: 4px solid var(--ink);
+    box-shadow: var(--shadow-lg);
+    animation: nf-pop .45s var(--ease-pop);
+}
+.nf-game-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--ink);
+    color: var(--yellow);
+    padding: 6px 6px 6px 14px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+.nf-game-bar button{
+    width: 34px;
+    height: 34px;
+    border: 3px solid var(--yellow);
+    background: var(--coral);
+    color: var(--ink);
+    font-size: 1rem;
+    cursor: pointer;
+}
+.nf-game iframe{
+    display: block;
+    width: 100%;
+    height: min(84vh, 800px);
+    border: 0;
+    background: var(--yellow);
+}
+
+/* ------------------------------------------------ keyframes */
+@keyframes nf-drop{
+    0%{ opacity: 0; transform: translateY(-120%) rotate(-12deg); }
+    60%{ opacity: 1; transform: translateY(8%) rotate(4deg); }
+    80%{ transform: translateY(-4%) rotate(-2deg); }
+    100%{ opacity: 1; transform: none; }
+}
+@keyframes nf-egg-crack{
+    0%, 100%{ transform: translate(-50%, -50%) rotate(0) scale(1); }
+    20%{ transform: translate(-52%, -50%) rotate(-12deg) scale(1.04); }
+    40%{ transform: translate(-48%, -50%) rotate(10deg) scale(1.06); }
+    60%{ transform: translate(-52%, -51%) rotate(-8deg) scale(1.08); }
+    80%{ transform: translate(-48%, -50%) rotate(6deg) scale(1.04); }
+}
+@keyframes nf-flash{
+    0%{ opacity: .95; }
+    100%{ opacity: 0; }
+}
+@keyframes nf-shake{
+    10%, 90%{ transform: translate(-2px, 1px); }
+    20%, 80%{ transform: translate(4px, -2px); }
+    30%, 50%, 70%{ transform: translate(-8px, 3px) rotate(-1deg); }
+    40%, 60%{ transform: translate(8px, -3px) rotate(1deg); }
+}
+@keyframes nf-stamp{
+    0%{ opacity: 0; transform: translate(-50%, -50%) rotate(-10deg) scale(3); }
+    70%{ opacity: 1; transform: translate(-50%, -50%) rotate(-10deg) scale(.92); }
+    100%{ opacity: 1; transform: translate(-50%, -50%) rotate(-8deg) scale(1); }
+}
+@keyframes nf-fade{ from{ opacity: 0; } }
+@keyframes nf-pop{ from{ transform: translateY(40px) scale(.9) rotate(-2deg); } }
+@keyframes caret-blink{ 50%{ opacity: 0; } }
+
+@media screen and (max-width: 1000px){
+    .nf-stamp{
+        left: 50%;
+        top: 4%;
+    }
+}
+@media screen and (max-width: 560px){
+    .nf-stamp{
+        top: -14%;
+        font-size: 1.15rem;
+        border-width: 4px;
+        box-shadow: 6px 6px 0 var(--ink);
+    }
+    .nf-subtitle{
+        font-size: 1.05rem;
+    }
+    .nf-digit{
+        -webkit-text-stroke: 3px var(--ink);
+        text-shadow: 6px 6px 0 var(--ink);
+    }
+    .nf-actions .btn{
+        width: 100%;
+        justify-content: center;
+    }
+}

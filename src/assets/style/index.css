@@ -1,0 +1,177 @@
+/* ============================================================
+   Néo-brutalisme — design tokens
+   ============================================================ */
+:root{
+    /* palette */
+    --ink: #111111;
+    --paper: #FFF6E0;
+    --paper-light: #FFFDF7;
+    --yellow: #FFD23F;
+    --pink: #FF8AD8;
+    --mint: #74F2A8;
+    --coral: #FF7F5C;
+    --blue: #5B8CFF;
+    --purple: #9B5DE5;
+    --tint-pink: #FFE3F3;
+    --tint-mint: #DDFBEA;
+    --tint-blue: #E3EBFF;
+
+    /* alias historiques (utilisés par les composants) */
+    --primary-color: var(--yellow);
+    --primary-fade-color: #ffd23f80;
+    --primary-dark-color: var(--ink);
+    --underline-color: var(--ink);
+    --border-color: var(--ink);
+    --border-secondary: #3a3a3a;
+    --black-secondary: #2b2b2b;
+    --black: var(--ink);
+    --white: #FFFFFF;
+    --bg-color: var(--paper);
+    --bg-fade-color: var(--paper-light);
+    --danger-color: #FF3B3B;
+    --danger-dark-color: #C81E1E;
+    --success-color: #1FAA59;
+    --success-dark-color: #137A3F;
+    --text-secondary: #3d3d3d;
+    --default: #8E9799;
+    --border-radius: 0px;
+
+    /* système */
+    --bw: 3px;
+    --border: var(--bw) solid var(--ink);
+    --shadow-sm: 3px 3px 0 var(--ink);
+    --shadow: 6px 6px 0 var(--ink);
+    --shadow-lg: 10px 10px 0 var(--ink);
+    --font-display: 'Archivo Black', 'Arial Black', sans-serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --ease-pop: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: clip;
+}
+
+body{
+    background-color: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3{
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+::selection{
+    background: var(--pink);
+    color: var(--ink);
+}
+
+*:focus{
+    outline: none;
+}
+*:focus-visible{
+    outline: 3px dashed var(--ink);
+    outline-offset: 3px;
+}
+
+body.no-scroll{
+    overflow: hidden;
+}
+
+#root{
+    overflow-x: clip;
+    max-width: 1800px;
+    margin: auto;
+    border-left: var(--border);
+    border-right: var(--border);
+    background: var(--paper);
+}
+
+/* ------------------------------------------------------------ carte */
+.card{
+    background-color: var(--white);
+    border: var(--border);
+    border-radius: 0;
+    box-shadow: var(--shadow);
+    padding: 1.1rem 1.25rem;
+    transition: transform .15s ease, box-shadow .15s ease;
+    cursor: default;
+}
+.card:hover{
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--ink);
+}
+
+.primary{
+    color: var(--ink);
+}
+
+/* ------------------------------------------------------------ bande défilante */
+.marquee{
+    background: var(--ink);
+    color: var(--paper);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 5;
+}
+.marquee.tilt{
+    transform: rotate(-1.2deg);
+    margin: -12px -20px;
+}
+.marquee.yellow{
+    background: var(--yellow);
+    color: var(--ink);
+}
+.marquee-track{
+    display: inline-flex;
+    gap: 2.2rem;
+    padding: 0.85rem 0;
+    animation: marquee 28s linear infinite;
+    will-change: transform;
+}
+.marquee:hover .marquee-track{
+    animation-play-state: paused;
+}
+.marquee-item{
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 2.2rem;
+}
+.marquee-item::after{
+    content: '✦';
+    color: var(--pink);
+}
+.marquee.yellow .marquee-item::after{
+    color: var(--ink);
+}
+@keyframes marquee{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+    html{ scroll-behavior: auto; }
+}

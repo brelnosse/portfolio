@@ -1,0 +1,28 @@
+.projets_container{
+    position: relative;
+    z-index: 2;
+}
+.projets-container_header{
+    position: sticky;
+    top: 5rem;
+    background-color: var(--tint-pink);
+    z-index: 102;
+    border-bottom: var(--border);
+    margin: 0 -5rem;
+    padding: 0 5rem;
+}
+@media screen and (max-width: 774px) {
+    .projets-container_header{
+        margin: 0 -1.5rem;
+        padding: 0 1.5rem;
+    }
+}
+@media screen and (max-width: 525px) {
+    section.projets{
+        padding: 4rem 1rem;
+    }
+    .projets-container_header{
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+}

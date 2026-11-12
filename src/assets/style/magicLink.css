@@ -1,0 +1,15 @@
+.mLink{
+    position: relative;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 700;
+    background-image: linear-gradient(var(--section-accent, var(--yellow)), var(--section-accent, var(--yellow)));
+    background-size: 100% 35%;
+    background-position: 0 90%;
+    background-repeat: no-repeat;
+    transition: background-size .2s ease;
+    padding: 0 2px;
+}
+.mLink:hover{
+    background-size: 100% 100%;
+}

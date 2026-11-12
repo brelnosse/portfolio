@@ -1,0 +1,109 @@
+.scholar-career{
+    max-width: 24rem;
+    min-width: 24rem;
+    display: flex;
+    gap: 0.3125rem;
+    margin-top: 20px;
+}
+.scholar-career_text{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.scholar-career h3{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    line-height: 1.15;
+}
+.scholar-career_container .career.left{
+    display: flex;
+    gap: 0.625rem;
+    margin-top: 0.625rem;
+    margin-left: 1.3125rem;
+    flex-direction: row-reverse;
+}
+.scholar-career_container .career.left .scholar-career{
+    flex-direction: row-reverse;
+}
+.scholar-career_container .career{
+    display: flex;
+    gap: 0.625rem;
+    margin-top: 0.625rem;
+    margin-left: -1.2rem;
+    transition: opacity .5s ease, transform .6s var(--ease-pop);
+    transform: translateY(80px) rotate(3deg);
+    opacity: 0;
+}
+.scholar-career_container .career.visible{
+    transform: none;
+    opacity: 1;
+}
+.scholar-career_container .career:nth-child(odd) .scholar-career{ background: var(--paper-light); }
+.career .timeline{
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+.career h4{
+    font-size: 0.95em;
+    font-weight: 700;
+}
+.career .badge{
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    background: var(--yellow);
+    padding: 2px 10px;
+    font-size: 0.8em;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    cursor: default;
+}
+.career p{
+    line-height: 1.5;
+    font-size: .95rem;
+}
+.career p span{
+    font-size: 0.75em;
+    width: fit-content;
+    padding: 1px 8px;
+    display: block;
+    background-color: var(--ink);
+    color: var(--mint);
+    margin-bottom: 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+.indicator{
+    background-color: var(--white);
+    display: inline-block;
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    height: 2.5rem;
+}
+@media screen and (max-width: 915px) {
+    .scholar-career{
+        max-width: 18.75rem;
+        min-width: 18.75rem;
+    }
+}
+@media screen and (max-width: 720px) {
+    .scholar-career{
+        max-width: 16rem;
+        min-width: 16rem;
+    }
+    .scholar-career.card{
+        padding: 0.99rem 0.8rem;
+    }
+}
+@media screen and (max-width: 597px) {
+    .career .scholar-career{
+        flex-wrap: wrap;
+        min-width: calc(100vw - 6.25rem);
+    }
+}

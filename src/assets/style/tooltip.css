@@ -1,0 +1,77 @@
+.tooltip{
+    background-color: var(--white);
+    padding: .8rem 1rem;
+    position: absolute;
+    left: 0px;
+    top: auto;
+    bottom: calc(100% + 16px);
+    z-index: 5;
+    pointer-events: none;
+    min-width: 14rem;
+    max-width: 18rem;
+    border-radius: 0;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    transform: scale(0);
+    transform-origin: bottom left;
+    opacity: 0;
+    transition: transform .3s var(--ease-pop), opacity .2s ease, top .3s var(--ease-pop);
+    text-transform: none;
+}
+.tooltip.visible{
+    pointer-events: auto;
+}
+.tooltip::before{
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: var(--white);
+    border-right: var(--border);
+    border-bottom: var(--border);
+    bottom: -9px;
+    left: calc(var(--arrow-x, 1.5rem) - 7px);
+    transform: rotate(45deg);
+}
+/* bulle placée sous la pastille quand la barre de navigation masquerait le haut */
+.tooltip.below{
+    bottom: auto;
+    top: calc(100% + 16px);
+    transform-origin: top left;
+}
+.tooltip.below::before{
+    bottom: auto;
+    top: -9px;
+    transform: rotate(-135deg);
+}
+.tooltip .tooltip-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+}
+.tooltip .tooltip-header h2{
+    font-size: 1rem;
+    color: var(--ink);
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+    text-transform: uppercase;
+}
+.tooltip .tooltip-header svg{
+    font-size: 0.9em;
+}
+.tooltip .close-tooltip{
+    font-size: 1rem;
+    cursor: pointer;
+}
+.tooltip p{
+    font-weight: 500;
+    margin: 0.35rem 0 0;
+    font-size: .9rem;
+    line-height: 1.4;
+}
+.tooltip p:empty{
+    display: none;
+}
+

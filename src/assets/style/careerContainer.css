@@ -1,0 +1,57 @@
+section.education{
+    padding: 5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+.scholar-career_container {
+    padding: 3rem 0.625rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.scholar-career_container .sliderLevel{
+    height: auto;
+    width: 10px;
+    background-color: var(--white);
+    border: var(--border);
+    margin: auto;
+    position: relative;
+    background-image: repeating-linear-gradient(180deg, var(--ink) 0 10px, transparent 10px 20px);
+}
+.scholar-career_container .scrolling-indicator {
+    background-color: var(--pink);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.1s ease-out;
+    width: 2.2rem;
+    height: 2.2rem;
+    z-index: 2;
+    will-change: transform;
+}
+@media screen and (max-width: 976px) {
+    .scholar-career{
+        max-width: 18.75rem;
+        min-width: 18.75rem;
+    }
+}
+@media screen and (max-width: 720px) {
+    .scholar-career{
+        max-width: 15.625rem;
+        min-width: 15.625rem;
+    }
+}
+@media screen and (max-width: 597px) {
+    .scholar-career_container div.sliderLevel{
+        margin-left: 0px;
+    }
+    .career .scholar-career{
+        flex-wrap: wrap;
+        min-width: calc(100vw - 6.25rem);
+    }
+}

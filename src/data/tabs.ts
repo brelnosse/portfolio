@@ -1,0 +1,1 @@
+export const tabs:string[] = ['Tout', 'UI Design', 'web', 'Mobile','desktop'];

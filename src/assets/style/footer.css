@@ -1,0 +1,90 @@
+.site-footer{
+    background-color: var(--ink);
+    color: var(--paper);
+    border-top: 4px solid var(--ink);
+    background-image: radial-gradient(rgba(255, 210, 63, .14) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+}
+.footer-grid{
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 3rem;
+    padding: 4.5rem 5rem 3.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.site-footer h2{
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin: .9rem 0 .6rem;
+    color: var(--white);
+}
+.site-footer p{
+    line-height: 1.6;
+    margin-bottom: 1.3rem;
+    color: #e9e2cf;
+    max-width: 52ch;
+}
+.footer-tag{
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--ink);
+    border: var(--border);
+    border-color: var(--paper);
+    padding: 2px 10px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .8rem;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+}
+.footer-tag.pink{
+    background: var(--pink);
+}
+.footer-cta{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.footer-cta .btn{
+    margin-bottom: 1.6rem;
+    border-color: var(--paper);
+    box-shadow: 4px 4px 0 var(--yellow);
+}
+.footer-cta .btn:hover{
+    box-shadow: 6px 6px 0 var(--yellow);
+}
+.footer-cta .socialsContainer a{
+    border-color: var(--paper);
+    box-shadow: 3px 3px 0 var(--yellow);
+}
+.site-footer .hof li{
+    box-shadow: 3px 3px 0 var(--yellow);
+}
+.site-footer .hof-empty{
+    background: transparent;
+    color: var(--paper);
+    border-color: var(--yellow);
+}
+.footer-bottom{
+    border-top: 3px solid var(--paper);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem 1.5rem;
+    padding: 1.1rem 5rem;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    color: #cfc8b4;
+}
+@media screen and (max-width: 900px){
+    .footer-grid{
+        grid-template-columns: 1fr;
+        padding: 3.5rem 1.5rem 2.5rem;
+        gap: 3rem;
+    }
+    .footer-bottom{
+        padding: 1rem 1.5rem 5.5rem;
+    }
+}

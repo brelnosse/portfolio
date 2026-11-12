@@ -1,0 +1,32 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+src/assets/style/Refaire un cv sur canvas.txt
+# coordonnées personnelles du CV (dépôt public)
+cv/contact.local.json
+
+# CV et fichiers générés contenant des coordonnées (dépôt public)
+cv/out/
+src/assets/pdf/
+*.pdf
