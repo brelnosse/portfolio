@@ -138,7 +138,7 @@ export const projets:ProjectProps[] = [
             'Architecture responsive'
         ],
         url: '',
-        githubUrl: 'https://github.com/brelnosse/portofolio',
+        githubUrl: 'https://github.com/brelnosse/portfolio',
         skills: [
             {
                 icon: faJs,
